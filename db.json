@@ -1,0 +1,22 @@
+{
+  "employee": [
+    {
+      "name": "avinash455",
+      "email": "ok@gmail.com",
+      "contact": "8527527749",
+      "id": 12
+    },
+    {
+      "name": "chandu",
+      "email": "chandu@gmail.com",
+      "contact": "8527527749",
+      "id": 13
+    },
+    {
+      "name": "anil yadav",
+      "email": "anil@yadav.com",
+      "contact": "84647404845",
+      "id": 14
+    }
+  ]
+}
