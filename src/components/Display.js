@@ -33,7 +33,7 @@ const Display = () => {
 
   return (
     <div className="row bg-success">
-      <h1 className="p-3 mb-2 bg-success text-white">Display Data</h1>
+      <h1 className="p-3 mb-2 bg-success text-white">Registration Data</h1>
       <div className="col-md-12 bg-success ">
         <table className="table  table-striped table-bordered table-hover table-dark ">
           <thead className="">
@@ -41,7 +41,7 @@ const Display = () => {
               <th>id</th>
               <th>Name</th>
               <th>Email</th>
-              <th>Contact</th>
+              <th>Password</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -52,10 +52,10 @@ const Display = () => {
                   <th>{index + 1}</th>
                   <td>{items.name}</td>
                   <td>{items.email}</td>
-                  <td>{items.contact}</td>
+                  <td>{items.password}</td>
                   <td>
                     <Link
-                      to="/create"
+                      to="/"
                       type="button"
                       className="btn btn-primary mx-2"
                     >

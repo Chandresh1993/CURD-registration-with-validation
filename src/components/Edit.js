@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 const Edit = () => {
   // Navigate Hook
@@ -8,11 +8,11 @@ const Edit = () => {
 
   // Params Hook
   const { id } = useParams();
-  // storeing all input field into one useState.
+  // storing all input fields into one useState.
   const [inputValues, setInputValues] = useState({
     name: "",
     email: "",
-    contact: "",
+    password: "",
   });
 
   const handleInputChange = (e) => {
@@ -23,27 +23,27 @@ const Edit = () => {
     }));
   };
 
-  // submit data to api
+  // submit data to API
   function handleSubmit(e) {
     e.preventDefault();
-    const { name, email, contact } = inputValues;
-    if (!name || !email || !contact) {
-      alert("please fill in all fields");
+    const { name, email, password } = inputValues;
+    if (!name || !email || !password) {
+      alert("Please fill in all fields");
       return;
     } else {
       axios
         .put(`http://localhost:3004/employee/${id}`, inputValues)
         .then(() => {
-          navigate("/");
+          navigate("/create");
         })
         .catch((err) => {
-          console.log("this is put request error ", err);
+          console.log("This is a PUT request error ", err);
         });
     }
   }
 
-  // Edit function
-
+  
+// Get the data from api 
   useEffect(() => {
     loadUser();
   }, []);
@@ -54,16 +54,17 @@ const Edit = () => {
   };
 
   return (
-    <div className="container ">
-      <h1 className="p-3 mb-2 bg-danger text-dark">Edit Employee Details</h1>
-      <div className="py-3 border border-dark p-3 mb-2 bg-success text-white">
+    <div className="container">
+      
+      <div className="py-3 border border-dark p-3 mb-2 bg-info text-white">
+      <h1 className="p-3 mb-2 bg-success text-dark border border-5  border-dark">Edit Registration Details</h1>
         <form onSubmit={handleSubmit}>
           <div className="mb-3"></div>
           <div className="mb-3">
             <input
               type="text"
               className="form-control"
-              placeholder="Please Enter your Name"
+              placeholder="Please enter your Name"
               name="name"
               value={inputValues.name}
               onChange={handleInputChange}
@@ -73,7 +74,7 @@ const Edit = () => {
             <input
               type="email"
               className="form-control"
-              placeholder="Please Enter your Email"
+              placeholder="Please enter your Email"
               name="email"
               value={inputValues.email}
               onChange={handleInputChange}
@@ -81,11 +82,11 @@ const Edit = () => {
           </div>
           <div className="mb-3">
             <input
-              type="number"
+              type="password"
               className="form-control"
-              placeholder="Please Enter your Contact"
-              name="contact"
-              value={inputValues.contact}
+              placeholder="Please enter your Password"
+              name="password"
+              value={inputValues.password}
               onChange={handleInputChange}
             />
           </div>
@@ -94,6 +95,9 @@ const Edit = () => {
             <button className="btn btn-warning" type="submit">
               Edit Button
             </button>
+            <Link to="/" className="btn btn-secondary" type="submit">
+              Registration page
+            </Link>
           </div>
         </form>
       </div>
